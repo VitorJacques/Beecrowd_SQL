@@ -1,12 +1,6 @@
 # Beecrowd_SQL
 Resolução de 45 desafios dos 46 propostos pelo Beecrowd
 
-<div>
- <a img src="C:\Users\vajja\Pictures\teste.png"></a>
-  
- 
-</div>  
-
 O objetivo desse repositório é apresentar as 45 soluções das questões do Beecrowd em SQL.
 Cada arquivo SQL está nomeado de acordo com o número do desafio correspondente as questões Beecrowd.
 
