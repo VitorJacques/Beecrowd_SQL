@@ -8,6 +8,8 @@ Cada arquivo SQL está nomeado de acordo com o número do desafio correspondente
 
 Vale o destaque para as questões 2989, 2991, 2992, 2997 e 2998 que foram resolvidas por menos de 300 usuarios do site.
 
+![imagem_2022-03-22_205120](https://user-images.githubusercontent.com/88987295/159595373-c9919464-9919-403d-8735-807b6c53ff5c.png)
+
 Sobre o Beecrowd
 O Beecrowd é uma plataforma online criada com o objetivo de proporcionar aos seus usuários o aprendizado, 
 a prática e o aperfeiçoamento de suas habilidades em algoritmos através da resolução de problemas de programação
