@@ -1,0 +1,60 @@
+-- Selecionando as colunas pedidas--
+SELECT 
+	NAME,
+	COUNT(NAME) AS MATCHES,
+	SUM(VICTORIES) AS VICTORIES,
+	SUM(DEFEATS) AS DEFEATS,
+	SUM(DRAWS) AS DRAWS,
+	SUM(VICTORIES)*3 +SUM(DRAWS) AS SCORE
+
+-- Escolhendo de qual tabela traremos as informações --    
+FROM (--Criando uma tabela com as informações de vitoria, empate e derrota --
+(SELECT 
+			C.NAME AS NAME,
+			A.TEAM_1_GOALS,	
+			A.TEAM_2_GOALS,
+			CASE
+				WHEN A.TEAM_1_GOALS < A.TEAM_2_GOALS THEN 1
+				ELSE 0
+			END AS VICTORIES,
+	  		CASE
+				WHEN A.TEAM_1_GOALS > A.TEAM_2_GOALS THEN 1
+				ELSE 0
+			END AS DEFEATS,
+	  		CASE
+				WHEN A.TEAM_1_GOALS = A.TEAM_2_GOALS THEN 1
+				ELSE 0
+			END AS DRAWS
+		FROM MATCHES AS A
+		LEFT JOIN TEAMS AS B
+		ON A.TEAM_1 = B.ID 
+		LEFT JOIN TEAMS AS C
+		ON A.TEAM_2 = C.ID)
+		UNION ALL
+	(SELECT 
+			B.NAME AS NAME,
+			A.TEAM_1_GOALS,	
+			A.TEAM_2_GOALS,
+			CASE
+				WHEN A.TEAM_1_GOALS > A.TEAM_2_GOALS THEN 1
+				ELSE 0
+			END AS VICTORIES,
+	  		CASE
+				WHEN A.TEAM_1_GOALS < A.TEAM_2_GOALS THEN 1
+				ELSE 0
+			END AS DEFEATS,
+	  		CASE
+				WHEN A.TEAM_1_GOALS = A.TEAM_2_GOALS THEN 1
+				ELSE 0
+			END AS DRAWS
+		FROM MATCHES AS A
+		LEFT JOIN TEAMS AS B
+		ON A.TEAM_1 = B.ID 
+		LEFT JOIN TEAMS AS C
+		ON A.TEAM_2 = C.ID)) AS TAB
+
+--Agrupando os dados por time--
+GROUP BY NAME
+
+--Ordenando os dados por score--
+ORDER BY SCORE DESC
